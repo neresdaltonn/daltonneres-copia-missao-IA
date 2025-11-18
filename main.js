@@ -7,41 +7,48 @@ const caixaAlternativas = document.querySelector(".caixa-alternativas");
 const caixaResultado = document.querySelector(".caixa-resultado");
 const textoResultado = document.querySelector(".texto-resultado");
 
+
+
+
 let atual = 0;
 let perguntaAtual;
-let historiaFinal = "";
+let historiaFinal = " ";
 
-function mostraPergunta() {
-    if (atual >= perguntas.length) {
+function mostraPergunta(){
+
+    if (atual >= perguntas.length){
         mostraResultado();
         return;
     }
+
     perguntaAtual = perguntas[atual];
     caixaPerguntas.textContent = perguntaAtual.enunciado;
-    caixaAlternativas.textContent = "";
+    caixaAlternativas.textContent = " ";
     mostraAlternativas();
 }
 
-function mostraAlternativas() {
-    for (const alternativa of perguntaAtual.alternativas) {
+function mostraAlternativas(){
+    for (const alternativa of perguntaAtual.alternativas){
         const botaoAlternativas = document.createElement("button");
         botaoAlternativas.textContent = alternativa.texto;
         botaoAlternativas.addEventListener("click", () => respostaSelecionada(alternativa));
         caixaAlternativas.appendChild(botaoAlternativas);
-    }
+    } 
 }
 
-function respostaSelecionada(opcaoSelecionada) {
+function respostaSelecionada(opcaoSelecionada){
     const afirmacoes = aleatorio(opcaoSelecionada.afirmacao);
     historiaFinal += afirmacoes + " ";
     atual++;
     mostraPergunta();
 }
 
-function mostraResultado() {
-    caixaPerguntas.textContent = "Após avaliar suas respostas, o seu perfil profissional é:";
+function mostraResultado(){
+    caixaPerguntas.textContent = "Se fosse possível traduzir sua forma de aprender em palavras, diríamos que...";
     textoResultado.textContent = historiaFinal;
-    caixaAlternativas.textContent = "";
+    caixaAlternativas.textContent = " ";
 }
+
+
 
 mostraPergunta();
