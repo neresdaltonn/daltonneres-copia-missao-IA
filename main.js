@@ -44,11 +44,11 @@ function respostaSelecionada(opcaoSelecionada){
 }
 
 function mostraResultado(){
-    caixaPerguntas.textContent = "Após avaliar suas respostas, o seu perfil profissional é:";
+    caixaPerguntas.textContent = "Se fosse possível traduzir sua forma de aprender em palavras, diríamos que...";
     textoResultado.textContent = historiaFinal;
     caixaAlternativas.textContent = " ";
     caixaResultado.classList.add("mostrar");
-    botaoJogarNovamente.addEventListener("click". jogaNovamente)
+    botaoJogarNovamnete.addEventListener("click", jogaNovamente);
 }
 
 function jogaNovamente(){
