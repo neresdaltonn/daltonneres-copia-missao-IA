@@ -8,15 +8,15 @@ const caixaResultado = document.querySelector(".caixa-resultado");
 const textoResultado = document.querySelector(".texto-resultado");
 const botaoJogarNovamnete = document.querySelector(".novamente-btn");
 
-
-
 let atual = 0;
 let perguntaAtual;
-let historiaFinal = " ";
+let historiaFinal = "";
 
-function mostraPergunta(){
+// Adiciona o event listener ao botão de "Jogar novamente" uma única vez
+botaoJogarNovamnete.addEventListener("click", jogaNovamente);
 
-    if (atual >= perguntas.length){
+function mostraPergunta() {
+    if (atual >= perguntas.length) {
         mostraResultado();
         return;
     }
@@ -27,33 +27,32 @@ function mostraPergunta(){
     mostraAlternativas();
 }
 
-function mostraAlternativas(){
-    for (const alternativa of perguntaAtual.alternativas){
+function mostraAlternativas() {
+    for (const alternativa of perguntaAtual.alternativas) {
         const botaoAlternativas = document.createElement("button");
         botaoAlternativas.textContent = alternativa.texto;
         botaoAlternativas.addEventListener("click", () => respostaSelecionada(alternativa));
         caixaAlternativas.appendChild(botaoAlternativas);
-    } 
+    }
 }
 
-function respostaSelecionada(opcaoSelecionada){
+function respostaSelecionada(opcaoSelecionada) {
     const afirmacoes = aleatorio(opcaoSelecionada.afirmacao);
     historiaFinal += afirmacoes + " ";
     atual++;
     mostraPergunta();
 }
 
-function mostraResultado(){
-    caixaPerguntas.textContent = "Se pudesse descrever sua maneira de aprender, seria algo como...";
+function mostraResultado() {
+    caixaPerguntas.textContent = "Com base nas suas respostas, seu perfil profissional pode ser descrito como...";
     textoResultado.textContent = historiaFinal;
     caixaAlternativas.textContent = " ";
     caixaResultado.classList.add("mostrar");
-    botaoJogarNovamnete.addEventListener("click", jogaNovamente);
 }
 
-function jogaNovamente(){
+function jogaNovamente() {
     atual = 0;
-    historiaFinal = " ";
+    historiaFinal = "";
     caixaResultado.classList.remove("mostrar");
     mostraPergunta();
 }
