@@ -82,7 +82,9 @@ button:hover {
 .rodape {
     margin-top: 20px;
     padding-top: 10px;
+    /* Adiciona uma linha de separação sutil com a cor secundária */
     border-top: 1px solid var(--cor-secundaria); 
     font-size: 0.8em;
+    /* Usa um verde menos intenso para o texto do rodapé */
     color: rgba(0, 255, 0, 0.7); 
 }
